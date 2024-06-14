@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color5);
+            color: var(--color1);
+        }
+
+        .alumnos-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .alumnos-container h2 {
+            color: var(--color1);
+            margin-bottom: 20px;
+        }
+
+        .alumnos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .alumnos-card {
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid var(--color3);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .alumnos-card:hover {
+            background-color: var(--color4);
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .alumno-detail {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .alumno-detail div {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <div class="alumnos-container">
+            <h2>Alumnos</h2>
+            <div class="alumnos-grid">
+                {% for alumno in alumnos %}
+                <div class="alumnos-card">
+                    <div class="alumno-detail">
+                        <div>{{alumno.nombre}} {{alumno.apellido}}</div>
+                        <div>{{alumno.dni}}</div>
+                        <div>{{alumno.correo}}</div>
+                        <div>{{alumno.ciclo}} Ciclo</div>
+                        <div>{{alumno.carrera}}</div>
+                        <div><a href="{% url 'matricular' alumno.id %}">Matricular</a></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

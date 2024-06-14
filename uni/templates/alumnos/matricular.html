@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matricula</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color5);
+            color: var(--color1);
+        }
+
+        .form-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .form-container h2 {
+            color: var(--color1);
+            margin-bottom: 20px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container form div {
+            margin-bottom: 15px;
+        }
+
+        .form-container label {
+            color: var(--color1);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="number"],
+        .form-container select,
+        .form-container textarea {
+            padding: 10px;
+            border: 1px solid var(--color2);
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: var(--color3);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: var(--color4);
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <div class="form-container">
+            <h2>Matricular a {{alumno.carrera}}</h2>
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{formMatricula}}
+                    <button type="submit" >Matricular</button>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

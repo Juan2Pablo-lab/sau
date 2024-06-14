@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="curso-container">
+        <h2>{{carrera.nombre}}</h2>
+        <div class="curso-grid">
+            {% for curso in cursos %}
+            <div class="curso-card">
+                <h2>Primer Ciclo</h2>
+                <div>{{curso.nombre}}</div>
+                <div>{{curso.creditos}}</div>
+                <div>{{curso.horas}}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

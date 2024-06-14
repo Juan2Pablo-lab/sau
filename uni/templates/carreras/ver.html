@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreras</title>
+    <style>
+        .carreras-container {
+            padding: 20px;
+            background-color: #fff;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        .carreras-container h2 {
+            color: var(--color2);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .carreras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .carrera-card {
+            background-color: var(--color5);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .carrera-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carrera-card label {
+            display: block;
+            font-weight: bold;
+            color: var(--color2);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .carrera-card div {
+            color: var(--color1);
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <div class="carreras-container">
+            <h2>Carreras</h2>
+            <div class="carreras-grid">
+                {% for carrera in carreras %}
+                <div class="carrera-card">
+                    <a href="{% url 'inscribir' carrera.id %}"><label for="nombre">{{carrera.nombre}}</label></a>
+                    <div>Duracion: {{carrera.duracion}}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
