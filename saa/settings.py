@@ -82,7 +82,7 @@ WSGI_APPLICATION = "saa.wsgi.application"
 
 DATABASES = {
     "default": dj_database_url.config(
-        default='postgresql://postgres:admin@localhost:5432/saa2_db',
+        default='postgresql://postgres:postgres@localhost/postgres',
         conn_max_age=600
     )
 }
