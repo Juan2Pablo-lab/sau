@@ -80,24 +80,24 @@ WSGI_APPLICATION = "saa.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-#DATABASES = {
-#    "default": dj_database_url.config(
-#        default='postgresql://postgres:postgres@localhost/postgres',
-#        conn_max_age=600
-#    )
-#}
-
-
 DATABASES = {
-    "default" : {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "saa2_db",
-        "USER": "postgres",
-        "PASSWORD": "admin",
-        "HOST": "localhost",
-        "PORT": "5432"
-    }
+    "default": dj_database_url.config(
+        default='postgresql://postgres:postgres@localhost/postgres',
+        conn_max_age=600
+    )
 }
+
+
+#DATABASES = {
+#    "default" : {
+#        "ENGINE": "django.db.backends.postgresql_psycopg2",
+#        "NAME": "saa2_db",
+#        "USER": "postgres",
+#        "PASSWORD": "admin",
+#        "HOST": "localhost",
+#        "PORT": "5432"
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
