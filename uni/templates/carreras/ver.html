@@ -54,12 +54,13 @@
     {% extends 'base.html' %}
     {% block content %}
         <div class="carreras-container">
-            <h2>Carreras</h2>
+            <h2><a href="{% url 'nueva_carrera' %}">Carreras</a></h2>
             <div class="carreras-grid">
                 {% for carrera in carreras %}
                 <div class="carrera-card">
                     <a href="{% url 'inscribir' carrera.id %}"><label for="nombre">{{carrera.nombre}}</label></a>
-                    <div>Duracion: {{carrera.duracion}}</div>
+                    <div>Duracion: {{carrera.duracion_ciclos}}</div><br>
+                    <a href="{% url 'detalle_cursos' carrera.id %}"><div>Ver cursos</div></a>
                 </div>
                 {% endfor %}
             </div>

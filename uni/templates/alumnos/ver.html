@@ -74,6 +74,7 @@
                         <div>{{alumno.ciclo}} Ciclo</div>
                         <div>{{alumno.carrera}}</div>
                         <div><a href="{% url 'matricular' alumno.id %}">Matricular</a></div>
+                        <div><a href="{% url 'retirar' alumno.id %}">Retirar</a></div>
                     </div>
                 </div>
                 {% endfor %}

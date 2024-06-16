@@ -17,7 +17,7 @@ def registro(request):
                 user = User.objects.create_user(username=request.POST["username"],email=request.POST["email"],password=request.POST["password1"])
                 user.save()
                 login(request,user)
-                return redirect('index')
+                return redirect('carreras')
             except IntegrityError:
                 return render(request, 'registro.html', {'formUsuario':UserCreationForm, 'error':'Error el usuario ya existe.'})
         return render(request, 'registro.html', {'formUsuario': UserCreationForm, 'error': 'Error, las contraseñas no coinciden'})
@@ -30,9 +30,9 @@ def iniciarSesion(request):
             return render(request, 'iniciar.html', {'formUsuario': AuthenticationForm, 'error':'Error, el usuario o la contraseña no son validos.'})
         else:
             login(request, user)
-            return redirect('index')
+            return redirect('carreras')
     return render(request, 'iniciar.html', {'formUsuario': AuthenticationForm})
 
 def cerrarSesion(request):
     logout(request)
-    return redirect('index')
+    return redirect('carreras')

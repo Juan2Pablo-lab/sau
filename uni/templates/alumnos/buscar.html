@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos</title>
+    <title>Buscar Alumnos</title>
     <style>
         .search-container {
             margin-bottom: 20px;
@@ -76,31 +76,40 @@
     {% extends 'base.html' %}
     {% block content %}
         <div class="search-container">
-            <h2>Busqueda por ciclo de {{carrera.nombre}} ({{carrera.duracion_ciclos}} ciclos)</h2>
+            <h2>Buscar alumno por id</h2>
             <form method="get">
                 <div>
-                    <input type="serch" placeholder="Ingrese el numero de ciclo" name="buscar">
+                    <input type="serch"  name="buscar">
                     <button type="submit" >Buscar</button>
                 </div>
-            </form><br>
-            <a href="{% url 'nuevo_curso' carrera.id %}">Nuevo curso</a>
+            </form>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nombre</th>
-                            <th>Creditos</th>
-                            <th>horas</th>
-                            <th>Profesor</th>
+                            <th>Correo</th>
+                            <th>Dni</th>
+                            <th>Ciclo Culminado</th>
+                            <th>Ciclo</th>
+                            <th>Carrera</th>
+                            <th>Matricular</th>
+                            <th>Retirar Alumno</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for curso in cursos %}
+                        {% for alumno in alumnos %}
                         <tr>
-                            <td>{{curso.nombre}}</td>
-                            <td>{{curso.creditos}}</td>
-                            <td>{{curso.horas}}</td>
-                            <td>{{curso.profesor}}</td>
+                            <td>{{alumno.id}}</td>
+                            <td>{{alumno.nombre}} {{alumno.apellido}}</td>
+                            <td>{{alumno.correo}}</td>
+                            <td>{{alumno.dni}}</td>
+                            <td>{{alumno.ciclo_culminado}}</td>
+                            <td>{{alumno.ciclo}}</td>
+                            <td>{{alumno.carrera}}</td>
+                            <td><a href="{% url 'matricular' alumno.id %}">Matricular</a></td>
+                            <td><a href="{% url 'retirar' alumno.id %}">Retirar</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

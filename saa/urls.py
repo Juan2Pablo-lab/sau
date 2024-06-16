@@ -17,15 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from webapp.views import bienvenido, cerrarSesion, registro, iniciarSesion
-from uni.views import verCarrera, inscribir, verAlumnos, matricula
+from uni.views import verCarrera, inscribir, verAlumnos, matricula, nuevaCarrera, retirarAlumno, detalleCursos, buscarAlumno, nuevoCurso, verProfesores, nuevoProfesor
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", bienvenido, name='index'),
+    path("profesores/", verProfesores, name='profesores'),
+    path("nuevo_profesor/", nuevoProfesor, name='nuevo_profesor'),
     path("carreras/", verCarrera, name='carreras'),
-    path("carreras/inscribir/<int:id>", inscribir, name='inscribir'),
-    path("alumnos/", verAlumnos, name='alumnos'),
+    path("carreras/<int:id>", detalleCursos, name='detalle_cursos'),
+    path("carreras/<int:id>/nuevo_curso", nuevoCurso, name='nuevo_curso'),
+    path("nueva_carrera/", nuevaCarrera, name='nueva_carrera'),
+    path("inscribir/<int:id>", inscribir, name='inscribir'),
+    path("alumnos/", buscarAlumno, name='alumnos'),
     path("alumnos/<int:id>", matricula, name='matricular'),
+    path("alumnos/<int:id>/retirar", retirarAlumno, name='retirar'),
     path("iniciar_sesion/", iniciarSesion, name='registrar'),
     path("registrar/", registro, name='registrar'),
     path("cerrar_sesion/", cerrarSesion, name='cerrar_sesion'),

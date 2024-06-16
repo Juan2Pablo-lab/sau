@@ -19,7 +19,7 @@ ciclos = [
 
 class Carrera(models.Model):
     nombre = models.CharField(max_length=50)
-    duracion = models.IntegerField()
+    duracion_ciclos = models.IntegerField()
     def __str__(self):
         return f'{self.nombre}'
 
@@ -30,12 +30,12 @@ class Profesor(models.Model):
     correo = models.EmailField(max_length=50)
     def __str__(self):
         return f'{self.nombre} {self.apellido}'
-
+3
 class Curso(models.Model):
     nombre = models.CharField(max_length=50)
     creditos = models.IntegerField()
     horas = models.IntegerField()
-    ciclo = models.CharField(choices=ciclos, max_length=5, null=True)
+    ciclo = models.IntegerField(null=True)
     carrera = models.ForeignKey(Carrera, on_delete=models.SET_NULL, null=True)
     profesor = models.ForeignKey(Profesor, on_delete=models.SET_NULL, null=True, blank=True) 
     def __str__(self):
